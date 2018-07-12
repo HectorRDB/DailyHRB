@@ -1,0 +1,12 @@
+Package: HectorRDB
+Title: Useful function for everyday use
+Version: 1
+Authors: Hector Roux de Bézieux
+Description: Load a few usefull functions that I use daily.
+Depends: R (>= 3.5.0)
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Imports:
+    tidyverse,
+    stats
