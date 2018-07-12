@@ -1,6 +1,6 @@
 Package: HectorRDB
 Title: Useful function for everyday use
-Version: 1
+Version: 1.0
 Authors: Hector Roux de Bézieux
 Description: Load a few usefull functions that I use daily.
 Depends: R (>= 3.5.0)
