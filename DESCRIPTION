@@ -10,4 +10,7 @@ LazyData: true
 Imports:
     tidyverse,
     stats,
-    RColorBrewer
+    RColorBrewer,
+    BiocInstaller
+RoxygenNote: 6.0.1
+Maintainer: Hector Roux de Bézieux <hector.rouxdebzieux@berkeley.edu>
