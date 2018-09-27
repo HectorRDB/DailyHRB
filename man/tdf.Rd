@@ -2,7 +2,7 @@
 % Please edit documentation in R/tdf.R
 \name{tdf}
 \alias{tdf}
-\title{color Function}
+\title{Pipe compatible transpose}
 \usage{
 tdf(.data, rowname = NA, colname = "colnames")
 }
@@ -14,7 +14,7 @@ tdf(.data, rowname = NA, colname = "colnames")
 \item{colname}{the name of the column in the transposed data frame that will contain the old column names. Default to colnames}
 }
 \value{
-a vector with the palette names if print == TRUE
+The transposed dataframe
 }
 \description{
 Pipe compatible transpose
