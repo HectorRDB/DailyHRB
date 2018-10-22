@@ -3,4 +3,5 @@
 export(clean)
 export(colors)
 export(ipak)
+export(plotSmiley)
 export(tdf)

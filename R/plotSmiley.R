@@ -1,9 +1,16 @@
+# Plot a smiley face
+#' plotSmiley function
+#'
+#' Cute drawing for a family joke.
+#'
+#' @export
+
 plotSmiley <- function() {
   mouth <- lapply(seq(-1, 1, length.out = 100), function (x) {
     -sqrt(1 - x^2)
   }) %>% unlist()
   mouth <- data.frame("x" = seq(-1, 1, length.out = 100),
-                      "y" = mouth) %>% 
+                      "y" = mouth) %>%
            filter(y < -(.5)) %>%
            mutate(y = y +.5) %>%
            mutate(type = "mouth")

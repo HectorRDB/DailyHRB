@@ -11,6 +11,6 @@ Imports:
     tidyverse,
     stats,
     RColorBrewer,
-    BiocInstaller
+    BiocManager
 RoxygenNote: 6.1.0
 Maintainer: Hector Roux de Bézieux <hector.rouxdebzieux@berkeley.edu>
