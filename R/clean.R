@@ -7,6 +7,7 @@
 #' @export
 clean <- function(tb){
   cols <- colnames(tb)[
-    map_int(tb, function(x) length(unique(x))) > 1]
+    map_int(tb, function(x) length(unique(x))) > 1 &
+    map_int(tb, function(x) length(unique(x)))  < ncol(tb)]
   tb %>% select(!!cols)
 }

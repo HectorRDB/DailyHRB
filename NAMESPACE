@@ -2,6 +2,7 @@
 
 export(clean)
 export(colors)
+export(counts)
 export(ipak)
 export(plotSmiley)
 export(tdf)

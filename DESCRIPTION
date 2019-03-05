@@ -12,5 +12,5 @@ Imports:
     stats,
     RColorBrewer,
     BiocManager
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Maintainer: Hector Roux de Bézieux <hector.rouxdebzieux@berkeley.edu>

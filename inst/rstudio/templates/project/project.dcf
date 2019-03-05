@@ -1,0 +1,14 @@
+Binding: project
+Title: Personal Project Template
+
+Parameter: save
+Widget: CheckboxInput
+Label: Save on Exit
+Default: On
+Position: left
+
+Parameter: author
+Widget: TextInput
+Label: Author Name
+Default: Name
+Position: right
