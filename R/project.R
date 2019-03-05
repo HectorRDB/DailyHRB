@@ -49,7 +49,7 @@ project <- function(path, ...) {
   # Create the files and directory
 
   default <- "~/Documents/Coding/Templates/github/"
-  RmdTemplate <- "~/Documents/Coding/HectorRDB/inst/rmarkdown/templates/my_template/skeleton/skeleton.Rmd"
+  RmdTemplate <- "~/Documents/Coding/DailyHRB/inst/rmarkdown/templates/my_template/skeleton/skeleton.Rmd"
 
   dir.create(paste0(path, "/cache"), showWarnings = FALSE)
   file.copy(from = paste0(default, "cache/README.md"),

@@ -1,7 +1,7 @@
-#' R package: HectorRDB
+#' R package: DailyHRB
 #'
 #' Some useful functions I use daily
 #'
 #' @docType package
-#' @name HectorRDB
+#' @name DailyHRB
 NULL

@@ -1,3 +1,3 @@
 library(testthat)
 
-test_check("HectorRDB")
+test_check("DailyHRB")
