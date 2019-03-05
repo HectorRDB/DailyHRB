@@ -6,5 +6,5 @@ You can install it from Github with the following:
 if(! "devtools" %in% installed.packages()){
   install.pacakges("devtools")
 }
-devtools::install_github("HectorRDB/utils")
+devtools::install_github("HectorRDB/Utils")
 ```
