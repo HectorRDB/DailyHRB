@@ -15,7 +15,7 @@ opts_chunk$set(
   fig.pos = "!h", out.extra = "", warning = F, message = F,
   fig.width = 5, fig.align = "center", echo = F
 )
-libs <- c()
+libs <- c("here")
 suppressMessages(
   suppressWarnings(sapply(libs, require, character.only = TRUE))
 )

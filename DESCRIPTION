@@ -2,7 +2,7 @@ Package: DailyHRB
 Title: Useful function for everyday use
 Version: 1.0
 Author: Hector Roux de Bézieux
-Description: Load a few useful functions that I use daily.
+Description: Load a few useful functions that I use daily. Also a place to save my RStudio  templates.
 Depends: R (>= 3.5.0)
 License: CC0
 Encoding: UTF-8
