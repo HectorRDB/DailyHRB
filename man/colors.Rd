@@ -4,7 +4,7 @@
 \alias{colors}
 \title{color Function}
 \usage{
-colors(print = F)
+colors(print = FALSE)
 }
 \arguments{
 \item{print}{If TRUE, print the palette names}
@@ -14,4 +14,7 @@ a vector with the palette names if print == TRUE
 }
 \description{
 Print the palettes of RColorBrewer
+}
+\examples{
+DailyHRB::colors()
 }

@@ -1,16 +1,36 @@
 Package: DailyHRB
 Title: Useful function for everyday use
-Version: 1.0
-Author: Hector Roux de Bézieux
+Version: 1.0.0
+Authors@R: c(person("Hector", "Roux de Bézieux", role = c("aut", "cre"),
+                     email = "hector.rouxdebezieux@berkeley.edu",
+		     comment = c(ORCID = "0000-0002-1489-8339")))
 Description: Load a few useful functions that I use daily. Also a place to save my RStudio  templates.
 Depends: R (>= 3.5.0)
-License: CC0
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Collate:
+    'clean.R'
+    'checkType.R'
+    'colors.R'
+    'ipak.R'
+    'myTheme.R'
+    'plotSmiley.R'
+    'DailyHRB.r'
+    'project.R'
 Imports:
     tidyverse,
     stats,
     RColorBrewer,
-    BiocManager
+    BiocManager,
+    dplyr,
+    ggplot2,
+    magrittr,
+    purrr,
+    tidyr,
+    stringr
 RoxygenNote: 6.1.1
-Maintainer: Hector Roux de Bézieux <hector.rouxdebzieux@berkeley.edu>
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

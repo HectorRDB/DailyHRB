@@ -1,0 +1,111 @@
+---
+title: "How to use those functions"
+author: "Hector Roux de Bézieux"
+date: '`r format(Sys.time(), "%d %B , %Y")`'
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+vignette: >
+  %\VignetteIndexEntry{'Vignette for **tradeSeq**}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r packages, include=F}
+library(knitr)
+opts_chunk$set(
+  fig.pos = "!h", out.extra = "", warning = F, message = F,
+  fig.width = 5, fig.align = "center"
+)
+libs <- c("DailyHRB", "ggplot2")
+suppressMessages(
+  suppressWarnings(sapply(libs, require, character.only = TRUE))
+)
+rm(libs)
+```
+
+# Installation
+
+You can install this pacakge from Github using
+```{r, eval = F}
+if (!"devtools" %in% installed.packages()) {
+  install.pacakges("devtools")
+}
+devtools::install_github("HectorRDB/DailyHRB")
+```
+
+Alternatively, you can download it from Github and build it from source.
+```{bash, eval = F}
+git clone git@github.com:HectorRDB/DailyHRB.git
+R CMD INSTALL DailyHRB
+```
+
+# Templates
+
+This package provide two templates that I regularly use. Templates are an *[RStudio](https://www.rstudio.com/)* functionality that I find very useful to speed up project creation. To use those templates, install the package then open RStudio.
+
+- __Rmd template__: Click on _New File_ (or the "+" button), select _R Markdown..._ in the pulldown menu. Then, select _From Template_ and select _My Template (DailyHRB)_.
+- __Project Template__: Click on _New Project (or the second "+" button), select _New Project_. Then, select _Personal Project Template_.
+
+To create similar files for yourself, the easiest way is to create your own package. Then, create a __Rmd__ file that you want as template and create a struture similar to the [__int__ folder of the Github repo](https://github.com/HectorRDB/DailyHRB/tree/master/inst). 
+
+For the project, it ia bit more complex. It relies on the *[project.R](https://github.com/HectorRDB/DailyHRB/blob/master/R/project.R)* file in the __R__ folder and some other files in [__inst__](https://github.com/HectorRDB/DailyHRB/tree/master/inst). I hope to be able to create a tutorial at some point.
+
+# Functions
+## my_theme
+
+I rely a lot on *ggplot2* to quickly plot nice graphs but I don't like the deaults themes. The one I prefer is the *theme_classic* but it still needed some improvements. So I build a *ggplot2* theme.
+
+```{r}
+p <- ggplot(data.frame(x = 0:10, y = 0:10 + rnorm(11)),
+       aes(x = x, y = y)) +
+  geom_point()
+p 
+p + my_theme()
+```
+
+## ipak
+
+This function loads the packages and install them from CRAN or Bioconductor if needed, using the [__BiocManager__](https://cran.r-project.org/web/packages/BiocManager/index.html) package.
+
+```{r}
+# Example
+ipak(c("ggplot2", "Biobase"))
+```
+
+## checkType
+
+This function is useful when analyzing micro-array data, RNA-Seq or scRNA-Seq data. It plots the boxplot of 10 (tunable) random columns from the input matrix. It allows to quickly see whether the data is logged and / or normalized when exploring a new dataset.
+
+```{r}
+data <- matrix(rnbinom(1000 * 100, size = 1000, prob = .999), ncol = 100)
+checkType(data)
+```
+
+## Clean
+
+It is a function that I use to clean metadata file, typically from [SRA](https://www.ncbi.nlm.nih.gov/sra). It removes all columns that only have one unique value, and optionaly all columns that have no value with duplicates.
+
+```{r}
+metaData <- data.frame(SRA = "SRA17CJQ1",
+                       ID1 = sample(letters, 12, replace = F),
+                       group = c(rep("group1", 4), rep("group2", 4), rep("group3", 4)))
+metaData$ID2 <- toupper(metaData$ID1)
+metaData
+clean(metaData)
+clean(metaData, unique = F, keep = "ID1")
+```
+
+## plotSmiley
+
+A sily function I did once when I was bored
+
+```{r}
+plotSmiley()
+```
+
+## colors
+
+Just a shorcut, `r colors()` is equivalent to `r RColorBrewer::display.brewer.all()`. Setting *print = TRUE* will also print the names of all palettes in RColorBrewer. 

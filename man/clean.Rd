@@ -4,11 +4,27 @@
 \alias{clean}
 \title{clean Function}
 \usage{
-clean(tb)
+clean(tb, unique = TRUE, keep = NULL)
 }
 \arguments{
 \item{tb}{the \code{data.frame} or \code{tibble}}
+
+\item{unique}{whether to keep unique columns}
+
+\item{keep}{a vector of columns to keep}
 }
 \description{
-This function remove columns of a dataframe that provide no info (identitcal accross all rows)
+This function remove columns of a dataframe that provide no info (identitcal accross all rows) or
+disinct accross all rows. Useful to clean metadata files.
+}
+\examples{
+metaData <- data.frame(SRA = "SRA17CJQ1",
+                       ID1 = sample(letters, 12, replace = FALSE),
+                       group = c(rep("group1", 4),
+                                 rep("group2", 4),
+                                 rep("group3", 4)))
+metaData$ID2 <- toupper(metaData$ID1)
+metaData
+clean(metaData)
+clean(metaData, unique = FALSE, keep = "ID1")
 }

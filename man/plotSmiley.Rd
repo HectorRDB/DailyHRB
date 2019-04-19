@@ -9,3 +9,6 @@ plotSmiley()
 \description{
 Cute drawing for a family joke.
 }
+\examples{
+DailyHRB::plotSmiley()
+}

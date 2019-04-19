@@ -7,6 +7,7 @@
 #
 # The function itself just echos its inputs and outputs to a file called INDEX,
 # which is then opened by RStudio when the new project is opened.
+#' @import stringr
 project <- function(path, ...) {
 
   # ensure path exists

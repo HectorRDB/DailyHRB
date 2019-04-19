@@ -7,8 +7,11 @@
 ipak(pkg)
 }
 \arguments{
-\item{pcks}{a vector of characters naming packages}
+\item{pkg}{a vector of characters naming packages}
 }
 \description{
 This function loads the packages and install them from CRAN or Bioconductor if needed
+}
+\examples{
+DailyHRB::ipak(c("ggplot2", "Biobase"))
 }
