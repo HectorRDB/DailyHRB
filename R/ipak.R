@@ -11,7 +11,7 @@ ipak <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
   if (length(new.pkg)) {
     if (!"BiocManager" %in% installed.packages()) {
-      install.pacakges("BiocManager")
+      install.packages("BiocManager")
     }
     BiocManager::install(new.pkg, dependencies = TRUE)
   }

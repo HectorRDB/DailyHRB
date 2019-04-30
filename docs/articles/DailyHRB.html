@@ -64,7 +64,7 @@
       <h1>How to use those functions</h1>
                         <h4 class="author">Hector Roux de Bézieux</h4>
             
-            <h4 class="date">19 April , 2019</h4>
+            <h4 class="date">30 April , 2019</h4>
       
       
       <div class="hidden name"><code>DailyHRB.Rmd</code></div>
@@ -130,7 +130,7 @@ p </code></pre></div>
 <span class="kw"><a href="../reference/checkType.html">checkType</a></span>(data)</code></pre></div>
 <p><img src="DailyHRB_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;"></p>
 <pre><code>##   0%  25%  50%  75% 100% 
-##    0    0    1    2    8</code></pre>
+##    0    0    1    2    9</code></pre>
 </div>
 <div id="clean" class="section level2">
 <h2 class="hasAnchor">
@@ -142,46 +142,46 @@ p </code></pre></div>
 metaData<span class="op">$</span>ID2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/chartr">toupper</a></span>(metaData<span class="op">$</span>ID1)
 metaData</code></pre></div>
 <pre><code>##          SRA ID1  group ID2
-## 1  SRA17CJQ1   t group1   T
+## 1  SRA17CJQ1   f group1   F
 ## 2  SRA17CJQ1   i group1   I
-## 3  SRA17CJQ1   h group1   H
-## 4  SRA17CJQ1   n group1   N
-## 5  SRA17CJQ1   y group2   Y
-## 6  SRA17CJQ1   k group2   K
-## 7  SRA17CJQ1   s group2   S
-## 8  SRA17CJQ1   j group2   J
+## 3  SRA17CJQ1   d group1   D
+## 4  SRA17CJQ1   z group1   Z
+## 5  SRA17CJQ1   u group2   U
+## 6  SRA17CJQ1   o group2   O
+## 7  SRA17CJQ1   j group2   J
+## 8  SRA17CJQ1   q group2   Q
 ## 9  SRA17CJQ1   l group3   L
-## 10 SRA17CJQ1   b group3   B
-## 11 SRA17CJQ1   r group3   R
-## 12 SRA17CJQ1   m group3   M</code></pre>
+## 10 SRA17CJQ1   p group3   P
+## 11 SRA17CJQ1   g group3   G
+## 12 SRA17CJQ1   e group3   E</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData)</code></pre></div>
 <pre><code>##    ID1  group ID2
-## 1    t group1   T
+## 1    f group1   F
 ## 2    i group1   I
-## 3    h group1   H
-## 4    n group1   N
-## 5    y group2   Y
-## 6    k group2   K
-## 7    s group2   S
-## 8    j group2   J
+## 3    d group1   D
+## 4    z group1   Z
+## 5    u group2   U
+## 6    o group2   O
+## 7    j group2   J
+## 8    q group2   Q
 ## 9    l group3   L
-## 10   b group3   B
-## 11   r group3   R
-## 12   m group3   M</code></pre>
+## 10   p group3   P
+## 11   g group3   G
+## 12   e group3   E</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData, <span class="dt">unique =</span> F, <span class="dt">keep =</span> <span class="st">"ID1"</span>)</code></pre></div>
 <pre><code>##     group ID1
-## 1  group1   t
+## 1  group1   f
 ## 2  group1   i
-## 3  group1   h
-## 4  group1   n
-## 5  group2   y
-## 6  group2   k
-## 7  group2   s
-## 8  group2   j
+## 3  group1   d
+## 4  group1   z
+## 5  group2   u
+## 6  group2   o
+## 7  group2   j
+## 8  group2   q
 ## 9  group3   l
-## 10 group3   b
-## 11 group3   r
-## 12 group3   m</code></pre>
+## 10 group3   p
+## 11 group3   g
+## 12 group3   e</code></pre>
 </div>
 <div id="plotsmiley" class="section level2">
 <h2 class="hasAnchor">
