@@ -18,6 +18,7 @@ Collate:
     'plotSmiley.R'
     'DailyHRB.r'
     'project.R'
+    'updatePackages.R'
 Imports:
     tidyverse,
     stats,

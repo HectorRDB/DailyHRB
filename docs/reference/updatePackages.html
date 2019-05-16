@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>clean Function — clean • DailyHRB</title>
+<title>updatePackages Function — updatePackages • DailyHRB</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="clean Function — clean" />
+<meta property="og:title" content="updatePackages Function — updatePackages" />
 
-<meta property="og:description" content="This function remove columns of a dataframe that provide no info (identitcal accross all rows) or
-disinct accross all rows. Useful to clean metadata files." />
+<meta property="og:description" content="This function needs only to be run when R is updated (i.e once a year). It will look at the old list of packages that where installed and will try to install them. It will also returns a list of the packages that failed (probabvly mostly Github packages)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -98,90 +97,39 @@ disinct accross all rows. Useful to clean metadata files." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>clean Function</h1>
+    <h1>updatePackages Function</h1>
     
-    <div class="hidden name"><code>clean.Rd</code></div>
+    <div class="hidden name"><code>updatePackages.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function remove columns of a dataframe that provide no info (identitcal accross all rows) or
-disinct accross all rows. Useful to clean metadata files.</p>
+    <p>This function needs only to be run when R is updated (i.e once a year). It will look at the old list of packages that where installed and will try to install them. It will also returns a list of the packages that failed (probabvly mostly Github packages).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>clean</span>(<span class='no'>tb</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>updatePackages</span>(<span class='no'>oldLib</span>, <span class='kw'>newLib</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/libPaths'>.libPaths</a></span>()[<span class='fl'>1</span>])</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tb</th>
-      <td><p>the <code>data.frame</code> or <code>tibble</code></p></td>
+      <th>oldLib</th>
+      <td><p>where the old packages where stored</p></td>
     </tr>
     <tr>
-      <th>unique</th>
-      <td><p>whether to keep unique columns</p></td>
-    </tr>
-    <tr>
-      <th>keep</th>
-      <td><p>a vector of columns to keep</p></td>
+      <th>newLib</th>
+      <td><p>where the new packages will be stored</p></td>
     </tr>
     </table>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>metaData</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>SRA</span> <span class='kw'>=</span> <span class='st'>"SRA17CJQ1"</span>,
-                       <span class='kw'>ID1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sample'>sample</a></span>(<span class='no'>letters</span>, <span class='fl'>12</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
-                       <span class='kw'>group</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"group1"</span>, <span class='fl'>4</span>),
-                                 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"group2"</span>, <span class='fl'>4</span>),
-                                 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"group3"</span>, <span class='fl'>4</span>)))
-<span class='no'>metaData</span>$<span class='no'>ID2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/chartr'>toupper</a></span>(<span class='no'>metaData</span>$<span class='no'>ID1</span>)
-<span class='no'>metaData</span></div><div class='output co'>#&gt;          SRA ID1  group ID2
-#&gt; 1  SRA17CJQ1   r group1   R
-#&gt; 2  SRA17CJQ1   z group1   Z
-#&gt; 3  SRA17CJQ1   y group1   Y
-#&gt; 4  SRA17CJQ1   e group1   E
-#&gt; 5  SRA17CJQ1   l group2   L
-#&gt; 6  SRA17CJQ1   j group2   J
-#&gt; 7  SRA17CJQ1   q group2   Q
-#&gt; 8  SRA17CJQ1   h group2   H
-#&gt; 9  SRA17CJQ1   i group3   I
-#&gt; 10 SRA17CJQ1   t group3   T
-#&gt; 11 SRA17CJQ1   o group3   O
-#&gt; 12 SRA17CJQ1   s group3   S</div><div class='input'><span class='fu'>clean</span>(<span class='no'>metaData</span>)</div><div class='output co'>#&gt;    ID1  group ID2
-#&gt; 1    r group1   R
-#&gt; 2    z group1   Z
-#&gt; 3    y group1   Y
-#&gt; 4    e group1   E
-#&gt; 5    l group2   L
-#&gt; 6    j group2   J
-#&gt; 7    q group2   Q
-#&gt; 8    h group2   H
-#&gt; 9    i group3   I
-#&gt; 10   t group3   T
-#&gt; 11   o group3   O
-#&gt; 12   s group3   S</div><div class='input'><span class='fu'>clean</span>(<span class='no'>metaData</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='st'>"ID1"</span>)</div><div class='output co'>#&gt;     group ID1
-#&gt; 1  group1   r
-#&gt; 2  group1   z
-#&gt; 3  group1   y
-#&gt; 4  group1   e
-#&gt; 5  group2   l
-#&gt; 6  group2   j
-#&gt; 7  group2   q
-#&gt; 8  group2   h
-#&gt; 9  group3   i
-#&gt; 10 group3   t
-#&gt; 11 group3   o
-#&gt; 12 group3   s</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>
