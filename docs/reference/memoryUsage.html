@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>myTheme — my_theme • DailyHRB</title>
+<title>memoryUsage Function — memoryUsage • DailyHRB</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="myTheme — my_theme" />
+<meta property="og:title" content="memoryUsage Function — memoryUsage" />
 
-<meta property="og:description" content="This function returns a theme that can be added to a ggplot object
-It is based on the theme_classic, with some small tweaks." />
+<meta property="og:description" content="Take as input a memory file usage and plot usage over time as well as maximum
+ usage" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -98,63 +98,36 @@ It is based on the theme_classic, with some small tweaks." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>myTheme</h1>
+    <h1>memoryUsage Function</h1>
     
-    <div class="hidden name"><code>my_theme.Rd</code></div>
+    <div class="hidden name"><code>memoryUsage.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function returns a theme that can be added to a ggplot object
-It is based on the theme_classic, with some small tweaks.</p>
+    <p>Take as input a memory file usage and plot usage over time as well as maximum
+ usage</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>my_theme</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>memoryUsage</span>(<span class='no'>loc</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Other arguments passed to the theme function in ggplot2.</p></td>
+      <th>loc</th>
+      <td><p>the file location</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a theme</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This theme has two goals. First it makes the default behaviors that I like in
-a plot: the classic theme, which is a nice ratio between purity and
-annotations, no background color so that, when the image is saved as a pdf,
-it incorporates better with slides or report, and a centered title when there
-is one.
-Secondly, it avoids doing theme_smth() + theme(other options) so that we can
-do both in the same time. Drawback is that there is no auto-complete in that
-case so that option should only be used for people already familiar with the
-ggplot themes.</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0</span>:<span class='fl'>10</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>0</span>:<span class='fl'>10</span> + <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Normal'>rnorm</a></span>(<span class='fl'>11</span>)),
-            <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>y</span>)) +
-    <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>()
-<span class='no'>p</span></div><div class='img'><img src='my_theme-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>p</span> + <span class='kw pkg'>DailyHRB</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/DailyHRB/topics/my_theme'>my_theme</a></span>()</div><div class='img'><img src='my_theme-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

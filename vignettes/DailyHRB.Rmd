@@ -108,4 +108,4 @@ plotSmiley()
 
 ## colors
 
-Just a shorcut, `r colors()` is equivalent to `r RColorBrewer::display.brewer.all()`. Setting *print = TRUE* will also print the names of all palettes in RColorBrewer. 
+Just a shorcut, `colors()` is equivalent to `RColorBrewer::display.brewer.all()`. Setting *print = TRUE* will also print the names of all palettes in RColorBrewer. 

@@ -19,8 +19,8 @@ Collate:
     'DailyHRB.r'
     'project.R'
     'updatePackages.R'
+    'singleJobMemoryUsage.R'
 Imports:
-    tidyverse,
     stats,
     RColorBrewer,
     BiocManager,
@@ -29,7 +29,8 @@ Imports:
     magrittr,
     purrr,
     tidyr,
-    stringr
+    stringr,
+    readr
 RoxygenNote: 6.1.1
 Suggests: 
     knitr,

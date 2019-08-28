@@ -64,7 +64,7 @@
       <h1>How to use those functions</h1>
                         <h4 class="author">Hector Roux de Bézieux</h4>
             
-            <h4 class="date">16 May , 2019</h4>
+            <h4 class="date">28 August , 2019</h4>
       
       
       <div class="hidden name"><code>DailyHRB.Rmd</code></div>
@@ -130,7 +130,7 @@
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/checkType.html">checkType</a></span>(data)</a></code></pre></div>
 <p><img src="DailyHRB_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;"></p>
 <pre><code>##   0%  25%  50%  75% 100% 
-##    0    0    1    2    8</code></pre>
+##    0    0    1    2    9</code></pre>
 </div>
 <div id="clean" class="section level2">
 <h2 class="hasAnchor">
@@ -142,46 +142,46 @@
 <a class="sourceLine" id="cb9-4" data-line-number="4">metaData<span class="op">$</span>ID2 &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/chartr">toupper</a></span>(metaData<span class="op">$</span>ID1)</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5">metaData</a></code></pre></div>
 <pre><code>##          SRA ID1  group ID2
-## 1  SRA17CJQ1   r group1   R
-## 2  SRA17CJQ1   x group1   X
-## 3  SRA17CJQ1   d group1   D
-## 4  SRA17CJQ1   q group1   Q
-## 5  SRA17CJQ1   y group2   Y
-## 6  SRA17CJQ1   n group2   N
-## 7  SRA17CJQ1   g group2   G
-## 8  SRA17CJQ1   c group2   C
-## 9  SRA17CJQ1   m group3   M
-## 10 SRA17CJQ1   p group3   P
-## 11 SRA17CJQ1   j group3   J
-## 12 SRA17CJQ1   b group3   B</code></pre>
+## 1  SRA17CJQ1   t group1   T
+## 2  SRA17CJQ1   m group1   M
+## 3  SRA17CJQ1   b group1   B
+## 4  SRA17CJQ1   k group1   K
+## 5  SRA17CJQ1   e group2   E
+## 6  SRA17CJQ1   j group2   J
+## 7  SRA17CJQ1   z group2   Z
+## 8  SRA17CJQ1   y group2   Y
+## 9  SRA17CJQ1   r group3   R
+## 10 SRA17CJQ1   l group3   L
+## 11 SRA17CJQ1   s group3   S
+## 12 SRA17CJQ1   u group3   U</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData)</a></code></pre></div>
 <pre><code>##    ID1  group ID2
-## 1    r group1   R
-## 2    x group1   X
-## 3    d group1   D
-## 4    q group1   Q
-## 5    y group2   Y
-## 6    n group2   N
-## 7    g group2   G
-## 8    c group2   C
-## 9    m group3   M
-## 10   p group3   P
-## 11   j group3   J
-## 12   b group3   B</code></pre>
+## 1    t group1   T
+## 2    m group1   M
+## 3    b group1   B
+## 4    k group1   K
+## 5    e group2   E
+## 6    j group2   J
+## 7    z group2   Z
+## 8    y group2   Y
+## 9    r group3   R
+## 10   l group3   L
+## 11   s group3   S
+## 12   u group3   U</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData, <span class="dt">unique =</span> F, <span class="dt">keep =</span> <span class="st">"ID1"</span>)</a></code></pre></div>
 <pre><code>##     group ID1
-## 1  group1   r
-## 2  group1   x
-## 3  group1   d
-## 4  group1   q
-## 5  group2   y
-## 6  group2   n
-## 7  group2   g
-## 8  group2   c
-## 9  group3   m
-## 10 group3   p
-## 11 group3   j
-## 12 group3   b</code></pre>
+## 1  group1   t
+## 2  group1   m
+## 3  group1   b
+## 4  group1   k
+## 5  group2   e
+## 6  group2   j
+## 7  group2   z
+## 8  group2   y
+## 9  group3   r
+## 10 group3   l
+## 11 group3   s
+## 12 group3   u</code></pre>
 </div>
 <div id="plotsmiley" class="section level2">
 <h2 class="hasAnchor">
@@ -193,7 +193,7 @@
 <div id="colors" class="section level2">
 <h2 class="hasAnchor">
 <a href="#colors" class="anchor"></a>colors</h2>
-<p>Just a shorcut, is equivalent to . Setting <em>print = TRUE</em> will also print the names of all palettes in RColorBrewer.</p>
+<p>Just a shorcut, <code><a href="../reference/colors.html">colors()</a></code> is equivalent to <code><a href="https://www.rdocumentation.org/packages/RColorBrewer/topics/ColorBrewer">RColorBrewer::display.brewer.all()</a></code>. Setting <em>print = TRUE</em> will also print the names of all palettes in RColorBrewer.</p>
 </div>
 </div>
   </div>
