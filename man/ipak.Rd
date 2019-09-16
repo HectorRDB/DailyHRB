@@ -12,6 +12,9 @@ ipak(pkg)
 \description{
 This function loads the packages and install them from CRAN or Bioconductor if needed
 }
+\details{
+Function inspired by Kelly Street
+}
 \examples{
 DailyHRB::ipak(c("ggplot2", "Biobase"))
 }

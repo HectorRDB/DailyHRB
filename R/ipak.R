@@ -4,6 +4,7 @@
 #' This function loads the packages and install them from CRAN or Bioconductor if needed
 #'
 #' @param pkg a vector of characters naming packages
+#' @details Function inspired by Kelly Street
 #' @export
 #' @examples
 #' DailyHRB::ipak(c("ggplot2", "Biobase"))
