@@ -132,7 +132,7 @@
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/checkType.html">checkType</a></span>(data)</a></code></pre></div>
 <p><img src="DailyHRB_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;"></p>
 <pre><code>##   0%  25%  50%  75% 100% 
-##    0    0    1    2    7</code></pre>
+##    0    0    1    2    8</code></pre>
 </div>
 <div id="clean" class="section level2">
 <h2 class="hasAnchor">
@@ -144,46 +144,46 @@
 <a class="sourceLine" id="cb9-4" data-line-number="4">metaData<span class="op">$</span>ID2 &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span>(metaData<span class="op">$</span>ID1)</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5">metaData</a></code></pre></div>
 <pre><code>##          SRA ID1  group ID2
-## 1  SRA17CJQ1   t group1   T
-## 2  SRA17CJQ1   o group1   O
-## 3  SRA17CJQ1   s group1   S
-## 4  SRA17CJQ1   b group1   B
-## 5  SRA17CJQ1   c group2   C
-## 6  SRA17CJQ1   l group2   L
-## 7  SRA17CJQ1   k group2   K
-## 8  SRA17CJQ1   w group2   W
-## 9  SRA17CJQ1   h group3   H
-## 10 SRA17CJQ1   e group3   E
-## 11 SRA17CJQ1   m group3   M
-## 12 SRA17CJQ1   y group3   Y</code></pre>
+## 1  SRA17CJQ1   e group1   E
+## 2  SRA17CJQ1   j group1   J
+## 3  SRA17CJQ1   l group1   L
+## 4  SRA17CJQ1   r group1   R
+## 5  SRA17CJQ1   w group2   W
+## 6  SRA17CJQ1   v group2   V
+## 7  SRA17CJQ1   z group2   Z
+## 8  SRA17CJQ1   q group2   Q
+## 9  SRA17CJQ1   u group3   U
+## 10 SRA17CJQ1   p group3   P
+## 11 SRA17CJQ1   h group3   H
+## 12 SRA17CJQ1   k group3   K</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData)</a></code></pre></div>
 <pre><code>##    ID1  group ID2
-## 1    t group1   T
-## 2    o group1   O
-## 3    s group1   S
-## 4    b group1   B
-## 5    c group2   C
-## 6    l group2   L
-## 7    k group2   K
-## 8    w group2   W
-## 9    h group3   H
-## 10   e group3   E
-## 11   m group3   M
-## 12   y group3   Y</code></pre>
+## 1    e group1   E
+## 2    j group1   J
+## 3    l group1   L
+## 4    r group1   R
+## 5    w group2   W
+## 6    v group2   V
+## 7    z group2   Z
+## 8    q group2   Q
+## 9    u group3   U
+## 10   p group3   P
+## 11   h group3   H
+## 12   k group3   K</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData, <span class="dt">unique =</span> F, <span class="dt">keep =</span> <span class="st">"ID1"</span>)</a></code></pre></div>
 <pre><code>##     group ID1
-## 1  group1   t
-## 2  group1   o
-## 3  group1   s
-## 4  group1   b
-## 5  group2   c
-## 6  group2   l
-## 7  group2   k
-## 8  group2   w
-## 9  group3   h
-## 10 group3   e
-## 11 group3   m
-## 12 group3   y</code></pre>
+## 1  group1   e
+## 2  group1   j
+## 3  group1   l
+## 4  group1   r
+## 5  group2   w
+## 6  group2   v
+## 7  group2   z
+## 8  group2   q
+## 9  group3   u
+## 10 group3   p
+## 11 group3   h
+## 12 group3   k</code></pre>
 </div>
 <div id="plotsmiley" class="section level2">
 <h2 class="hasAnchor">

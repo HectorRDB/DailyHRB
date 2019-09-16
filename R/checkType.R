@@ -8,6 +8,8 @@
 #' @return the quantiles of the count matrix
 #' @param count_matrix The matrix that we want to check
 #' @param n How many columns to check. Default to 10.
+#' @importFrom stats quantile
+#' @importFrom graphics boxplot plot
 #' @examples
 #' data <- matrix(rnbinom(1000 * 100, size = 1000, prob = .999), ncol = 100)
 #' checkType(data)
