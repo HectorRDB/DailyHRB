@@ -56,7 +56,7 @@ project <- function(path, ...) {
   file.copy(from = paste0(default, "cache/README.md"),
             to = paste0(path, "/cache/README.md"))
 
-  dir.create(paste0(path, "/data"), showWarnings = FALSE)
+  dir.create(paste0(path, "/Data"), showWarnings = FALSE)
 
   dir.create(paste0(path, "/Figures"), showWarnings = FALSE)
   file.copy(from = paste0(default, "Figures/README.md"),
@@ -66,9 +66,9 @@ project <- function(path, ...) {
   file.copy(from = paste0(default, "Sandbox/README.md"),
             to = paste0(path, "/Sandbox/README.md"))
 
-  dir.create(paste0(path, "/Rmd"), showWarnings = FALSE)
+  dir.create(paste0(path, "/Reports"), showWarnings = FALSE)
   file.copy(from = RmdTemplate,
-            to = paste0(path, "/Rmd/01-FirstAnalysis.Rmd"))
+            to = paste0(path, "/Reports/01-FirstAnalysis.Rmd"))
 
   file.create(paste0(path, "/.here"))
 

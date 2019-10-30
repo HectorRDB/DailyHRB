@@ -66,7 +66,7 @@
       <h1>How to use those functions</h1>
                         <h4 class="author">Hector Roux de Bézieux</h4>
             
-            <h4 class="date">16 September , 2019</h4>
+            <h4 class="date">30 October , 2019</h4>
       
       
       <div class="hidden name"><code>DailyHRB.Rmd</code></div>
@@ -79,13 +79,13 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>You can install this pacakge from Github using</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span> (<span class="op">!</span><span class="st">"devtools"</span> <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span>()) {</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw">install.pacakges</span>(<span class="st">"devtools"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">}</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"HectorRDB/DailyHRB"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="st">"devtools"</span> <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span>()) {</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="kw">install.pacakges</span>(<span class="st">"devtools"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"HectorRDB/DailyHRB"</span>)</span></code></pre></div>
 <p>Alternatively, you can download it from Github and build it from source.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="fu">git</span> clone git@github.com:HectorRDB/DailyHRB.git</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="ex">R</span> CMD INSTALL DailyHRB</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">git</span> clone git@github.com:HectorRDB/DailyHRB.git</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">R</span> CMD INSTALL DailyHRB</span></code></pre></div>
 </div>
 <div id="templates" class="section level1">
 <h1 class="hasAnchor">
@@ -107,20 +107,20 @@
 <h2 class="hasAnchor">
 <a href="#my_theme" class="anchor"></a>my_theme</h2>
 <p>I rely a lot on <em>ggplot2</em> to quickly plot nice graphs but I don’t like the deaults themes. The one I prefer is the <em>theme_classic</em> but it still needed some improvements. So I build a <em>ggplot2</em> theme.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">11</span>)),</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">       <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">p </a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span>(<span class="dv">11</span>)),</span>
+<span id="cb3-2"><a href="#cb3-2"></a>       <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y)) <span class="op">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="st">  </span><span class="kw">geom_point</span>()</span>
+<span id="cb3-4"><a href="#cb3-4"></a>p </span></code></pre></div>
 <p><img src="DailyHRB_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/my_theme.html">my_theme</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>p <span class="op">+</span><span class="st"> </span><span class="kw"><a href="../reference/my_theme.html">my_theme</a></span>()</span></code></pre></div>
 <p><img src="DailyHRB_files/figure-html/unnamed-chunk-3-2.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="ipak" class="section level2">
 <h2 class="hasAnchor">
 <a href="#ipak" class="anchor"></a>ipak</h2>
 <p>This function loads the packages and install them from CRAN or Bioconductor if needed, using the <a href="https://cran.r-project.org/web/packages/BiocManager/index.html"><strong>BiocManager</strong></a> package.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Example</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="../reference/ipak.html">ipak</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"ggplot2"</span>, <span class="st">"Biobase"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Example</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw"><a href="../reference/ipak.html">ipak</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"ggplot2"</span>, <span class="st">"Biobase"</span>))</span></code></pre></div>
 <pre><code>## ggplot2 Biobase 
 ##    TRUE    TRUE</code></pre>
 </div>
@@ -128,8 +128,8 @@
 <h2 class="hasAnchor">
 <a href="#checktype" class="anchor"></a>checkType</h2>
 <p>This function is useful when analyzing micro-array data, RNA-Seq or scRNA-Seq data. It plots the boxplot of 10 (tunable) random columns from the input matrix. It allows to quickly see whether the data is logged and / or normalized when exploring a new dataset.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/NegBinomial.html">rnbinom</a></span>(<span class="dv">1000</span> <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">prob =</span> <span class="fl">.999</span>), <span class="dt">ncol =</span> <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/checkType.html">checkType</a></span>(data)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/stats/NegBinomial.html">rnbinom</a></span>(<span class="dv">1000</span> <span class="op">*</span><span class="st"> </span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">prob =</span> <span class="fl">.999</span>), <span class="dt">ncol =</span> <span class="dv">100</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw"><a href="../reference/checkType.html">checkType</a></span>(data)</span></code></pre></div>
 <p><img src="DailyHRB_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;"></p>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##    0    0    1    2    8</code></pre>
@@ -138,58 +138,58 @@
 <h2 class="hasAnchor">
 <a href="#clean" class="anchor"></a>Clean</h2>
 <p>It is a function that I use to clean metadata file, typically from <a href="https://www.ncbi.nlm.nih.gov/sra">SRA</a>. It removes all columns that only have one unique value, and optionaly all columns that have no value with duplicates.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">metaData &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">SRA =</span> <span class="st">"SRA17CJQ1"</span>,</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">                       <span class="dt">ID1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(letters, <span class="dv">12</span>, <span class="dt">replace =</span> F),</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">                       <span class="dt">group =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"group1"</span>, <span class="dv">4</span>), <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"group2"</span>, <span class="dv">4</span>), <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"group3"</span>, <span class="dv">4</span>)))</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">metaData<span class="op">$</span>ID2 &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span>(metaData<span class="op">$</span>ID1)</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">metaData</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>metaData &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">SRA =</span> <span class="st">"SRA17CJQ1"</span>,</span>
+<span id="cb9-2"><a href="#cb9-2"></a>                       <span class="dt">ID1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(letters, <span class="dv">12</span>, <span class="dt">replace =</span> F),</span>
+<span id="cb9-3"><a href="#cb9-3"></a>                       <span class="dt">group =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"group1"</span>, <span class="dv">4</span>), <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"group2"</span>, <span class="dv">4</span>), <span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"group3"</span>, <span class="dv">4</span>)))</span>
+<span id="cb9-4"><a href="#cb9-4"></a>metaData<span class="op">$</span>ID2 &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span>(metaData<span class="op">$</span>ID1)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>metaData</span></code></pre></div>
 <pre><code>##          SRA ID1  group ID2
-## 1  SRA17CJQ1   e group1   E
-## 2  SRA17CJQ1   j group1   J
-## 3  SRA17CJQ1   l group1   L
-## 4  SRA17CJQ1   r group1   R
-## 5  SRA17CJQ1   w group2   W
-## 6  SRA17CJQ1   v group2   V
-## 7  SRA17CJQ1   z group2   Z
-## 8  SRA17CJQ1   q group2   Q
-## 9  SRA17CJQ1   u group3   U
-## 10 SRA17CJQ1   p group3   P
-## 11 SRA17CJQ1   h group3   H
-## 12 SRA17CJQ1   k group3   K</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData)</a></code></pre></div>
+## 1  SRA17CJQ1   n group1   N
+## 2  SRA17CJQ1   z group1   Z
+## 3  SRA17CJQ1   k group1   K
+## 4  SRA17CJQ1   p group1   P
+## 5  SRA17CJQ1   r group2   R
+## 6  SRA17CJQ1   u group2   U
+## 7  SRA17CJQ1   h group2   H
+## 8  SRA17CJQ1   j group2   J
+## 9  SRA17CJQ1   e group3   E
+## 10 SRA17CJQ1   s group3   S
+## 11 SRA17CJQ1   x group3   X
+## 12 SRA17CJQ1   b group3   B</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData)</span></code></pre></div>
 <pre><code>##    ID1  group ID2
-## 1    e group1   E
-## 2    j group1   J
-## 3    l group1   L
-## 4    r group1   R
-## 5    w group2   W
-## 6    v group2   V
-## 7    z group2   Z
-## 8    q group2   Q
-## 9    u group3   U
-## 10   p group3   P
-## 11   h group3   H
-## 12   k group3   K</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData, <span class="dt">unique =</span> F, <span class="dt">keep =</span> <span class="st">"ID1"</span>)</a></code></pre></div>
+## 1    n group1   N
+## 2    z group1   Z
+## 3    k group1   K
+## 4    p group1   P
+## 5    r group2   R
+## 6    u group2   U
+## 7    h group2   H
+## 8    j group2   J
+## 9    e group3   E
+## 10   s group3   S
+## 11   x group3   X
+## 12   b group3   B</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw"><a href="../reference/clean.html">clean</a></span>(metaData, <span class="dt">unique =</span> F, <span class="dt">keep =</span> <span class="st">"ID1"</span>)</span></code></pre></div>
 <pre><code>##     group ID1
-## 1  group1   e
-## 2  group1   j
-## 3  group1   l
-## 4  group1   r
-## 5  group2   w
-## 6  group2   v
-## 7  group2   z
-## 8  group2   q
-## 9  group3   u
-## 10 group3   p
-## 11 group3   h
-## 12 group3   k</code></pre>
+## 1  group1   n
+## 2  group1   z
+## 3  group1   k
+## 4  group1   p
+## 5  group2   r
+## 6  group2   u
+## 7  group2   h
+## 8  group2   j
+## 9  group3   e
+## 10 group3   s
+## 11 group3   x
+## 12 group3   b</code></pre>
 </div>
 <div id="plotsmiley" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plotsmiley" class="anchor"></a>plotSmiley</h2>
 <p>A sily function I did once when I was bored</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="../reference/plotSmiley.html">plotSmiley</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw"><a href="../reference/plotSmiley.html">plotSmiley</a></span>()</span></code></pre></div>
 <p><img src="DailyHRB_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;"></p>
 </div>
 <div id="colors" class="section level2">
@@ -231,7 +231,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
