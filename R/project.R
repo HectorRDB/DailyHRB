@@ -8,13 +8,14 @@
 # The function itself just echos its inputs and outputs to a file called INDEX,
 # which is then opened by RStudio when the new project is opened.
 #' @import stringr
+#' @import here
 project <- function(path, ...) {
 
   # ensure path exists
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
   dots <- list(...)
 
-  # Create READ.md file
+  # Create README.md file
   name <- unlist(stringr::str_split(path, "/"))
   name <- name[length(name)]
   # generate header
@@ -50,7 +51,8 @@ project <- function(path, ...) {
   # Create the files and directory
 
   default <- "~/Documents/Coding/Templates/github/"
-  RmdTemplate <- "~/Documents/Coding/DailyHRB/inst/rmarkdown/templates/my_template/skeleton/skeleton.Rmd"
+  RmdTemplate <- here(
+    "inst/rmarkdown/templates/my_template/skeleton/skeleton.Rmd")
 
   dir.create(paste0(path, "/cache"), showWarnings = FALSE)
   file.copy(from = paste0(default, "cache/README.md"),
