@@ -49,7 +49,7 @@ project <- function(path, ...) {
   writeLines(contents, con = file.path(path, "README.md"))
 
   # Create the files and directory
-
+  library(here)
   default <- "~/Documents/Coding/Templates/github/"
   RmdTemplate <- here(
     "inst/rmarkdown/templates/my_template/skeleton/skeleton.Rmd")
