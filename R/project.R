@@ -50,32 +50,40 @@ project <- function(path, ...) {
 
   # Create the files and directory
   library(here)
-  default <- "~/Documents/Coding/Templates/github/"
-  RmdTemplate <- here(
-    "inst/rmarkdown/templates/my_template/skeleton/skeleton.Rmd")
+  # default <- "~/Documents/Coding/Templates/github/"
+  RmdTemplate <- paste0(
+    system.file("rmarkdown", "templates",  "my_template", package = "DailyHRB"),
+    "/skeleton/skeleton.Rmd")
 
-  dir.create(paste0(path, "/cache"), showWarnings = FALSE)
-  file.copy(from = paste0(default, "cache/README.md"),
-            to = paste0(path, "/cache/README.md"))
+  dir.create(paste0(path, "/Cache"), showWarnings = FALSE)
+  message <- c("# Cached data", "",
+               "Here will go all intermediate data saved to gain time")
+  file.create(paste0(path, "/Cache/README.md"))
+  writeLines(message, con = paste0(path, "/Cache/README.md"))
 
   dir.create(paste0(path, "/Data"), showWarnings = FALSE)
 
   dir.create(paste0(path, "/Figures"), showWarnings = FALSE)
-  file.copy(from = paste0(default, "Figures/README.md"),
-            to = paste0(path, "/Figures/README.md"))
+  message <- c("# Figures", "",
+               "Here will go all the main figures of the analysis")
+  file.create(paste0(path, "/Figures/README.md"))
+  writeLines(message, con = paste0(path, "/Figures/README.md"))
 
   dir.create(paste0(path, "/Sandbox"), showWarnings = FALSE)
-  file.copy(from = paste0(default, "Sandbox/README.md"),
-            to = paste0(path, "/Sandbox/README.md"))
+  message <- c("# Sandbox", "",
+    "Here will go all the scripts that are used as exploration but do not make it into the final analysis")
+  file.create(paste0(path, "/Sandbox/README.md"))
+  writeLines(message, con = paste0(path, "/Sandbox/README.md"))
 
   dir.create(paste0(path, "/Reports"), showWarnings = FALSE)
+
   file.copy(from = RmdTemplate,
             to = paste0(path, "/Reports/01-FirstAnalysis.Rmd"))
 
   file.create(paste0(path, "/.here"))
 
   # .gitignore file
-  content <- c(".Rproj.user", ".Rhistory", "*.RData", "*.Rproj", "data/*",
+  content <- c(".Rproj.user", ".Rhistory", "*.RData", "*.Rproj", "Data/*",
                 "sandbox/*.RData")
   content <- paste(content, collapse = "\n")
   writeLines(content, con = file.path(path, "/.gitignore"))
