@@ -48,7 +48,7 @@
 #' @param genes The list of genes for which we want the orthologs
 #' @param gencode the gencode file
 #' @param species The species
-#' @import AnnotationDbi org.Hs.eg.db biomaRt org.Mm.eg.db")
+#' @import AnnotationDbi org.Hs.eg.db biomaRt org.Mm.eg.db
 #' @importFrom dplyr inner_join full_join
 #' @importFrom magrittr %>%
 .Orthologs <- function(genes, gencode, species){
@@ -86,7 +86,6 @@
 #'
 #' @param gHuman The list of human genes
 #' @param gMouse The list of mouse genes
-#' @import AnnotationDbi org.Hs.eg.db biomaRt org.Mm.eg.db")
 #' @import dplyr tidyr
 #' @importFrom magrittr %>%
 .common <- function(gHuman, gMouse) {
