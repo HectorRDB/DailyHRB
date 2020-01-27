@@ -20,6 +20,7 @@ Collate:
     'project.R'
     'updatePackages.R'
     'singleJobMemoryUsage.R'
+    'getCommonOrthologs.R'
 Imports:
     stats,
     RColorBrewer,
@@ -31,8 +32,13 @@ Imports:
     tidyr,
     stringr,
     readr,
-    here
-RoxygenNote: 6.1.1
+    here,
+    curl,
+    AnnotationDbi,
+    org.Hs.eg.db,
+    biomaRt,
+    org.Mm.eg.db
+RoxygenNote: 7.0.2
 Suggests: 
     knitr,
     rmarkdown

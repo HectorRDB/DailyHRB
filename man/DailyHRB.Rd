@@ -3,7 +3,6 @@
 \docType{package}
 \name{DailyHRB}
 \alias{DailyHRB}
-\alias{DailyHRB-package}
 \title{R package: DailyHRB}
 \description{
 Some useful functions I use daily
