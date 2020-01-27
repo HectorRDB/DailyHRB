@@ -33,5 +33,6 @@ return the matrices subset to the ortholog genes
 \details{
 When several genes from one species map to at least one gene from the other,
 counts are merged by taking the mean expression in each cell accross those
-genes. A different function can be specified using the `mergeFunction` argument.
+genes. A different function can be specified using the `mergeFunction`
+argument. This function is inspired adapted from
 }

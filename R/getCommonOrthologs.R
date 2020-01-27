@@ -58,22 +58,24 @@
                    stringsAsFactors = F) %>%
     dplyr::inner_join(gencode, by = "Symbol")
   colnames(df) <- paste(species, colnames(df), sep = "_")
-  x <- df[, paste(spec, "Ensembl", sep = "_")]
+  x <- df[, paste(species, "Ensembl", sep = "_")]
 
   # Find the orthologs per say
   spec <- ifelse(species == "human", "hsapiens", "mmusculus")
   other_species <- ifelse(species == "human", "mouse", "human")
 
-  marts <- list(Human = useMart("ensembl", dataset = "hsapiens_gene_ensembl"),
-                Mouse = useMart("ensembl", dataset = "mmusculus_gene_ensembl"))
+  marts <- list(human = biomaRt::useMart("ensembl",
+                                         dataset = "hsapiens_gene_ensembl"),
+                mouse = biomaRt::useMart("ensembl",
+                                         dataset = "mmusculus_gene_ensembl"))
 
-  genes <- getLDS(attributes = c("ensembl_gene_id_version"),
-                  filters = "ensembl_gene_id_version",
-                  values = x ,
-                  mart = marts[[species]],
-                  attributesL = c("ensembl_gene_id_version"),
-                  martL = marts[[other_species]],
-                  uniqueRows = F)
+  genes <- biomaRt::getLDS(attributes = c("ensembl_gene_id_version"),
+                           filters = "ensembl_gene_id_version",
+                           values = x ,
+                           mart = marts[[species]],
+                           attributesL = c("ensembl_gene_id_version"),
+                           martL = marts[[other_species]],
+                           uniqueRows = F)
   colnames(genes) <- paste(c(species, other_species), "Ensembl", sep = "_")
   df <- full_join(df, genes)
   return(df)
@@ -90,29 +92,29 @@
 #' @importFrom magrittr %>%
 .common <- function(gHuman, gMouse) {
   gFull <- dplyr::inner_join(gHuman, gMouse) %>%
-    dplyr::group_by(Human_Symbol, Mouse_Symbol) %>%
+    dplyr::group_by(human_Symbol, mouse_Symbol) %>%
     dplyr::slice(1) %>%
-    dplyr::select(-Human_Ensembl, -Mouse_Ensembl) %>%
-    dplyr::group_by(Human_Symbol) %>%
-    dplyr::arrange(Mouse_Symbol) %>%
-    dplyr::mutate(Mouse_Group_Name = paste0(Mouse_Symbol, collapse = "_")) %>%
+    dplyr::select(-human_Ensembl, -mouse_Ensembl) %>%
+    dplyr::group_by(human_Symbol) %>%
+    dplyr::arrange(mouse_Symbol) %>%
+    dplyr::mutate(mouse_Group_Name = paste0(mouse_Symbol, collapse = "_")) %>%
     dplyr::ungroup() %>%
-    dplyr::group_by(Mouse_Symbol) %>%
-    dplyr::arrange(Human_Symbol) %>%
-    dplyr::mutate(Human_Group_Name = paste0(Human_Symbol, collapse = "_"))
+    dplyr::group_by(mouse_Symbol) %>%
+    dplyr::arrange(human_Symbol) %>%
+    dplyr::mutate(human_Group_Name = paste0(human_Symbol, collapse = "_"))
 
   indsMouse <- gFull %>%
     dplyr::ungroup() %>%
-    dplyr::select(Mouse_ID, Mouse_Group_Name) %>%
+    dplyr::select(mouse_ID, mouse_Group_Name) %>%
     dplyr::distinct()
 
   indsHuman <- gFull %>%
     dplyr::ungroup() %>%
-    dplyr::select(Human_ID, Human_Group_Name) %>%
+    dplyr::select(human_ID, human_Group_Name) %>%
     dplyr::distinct()
 
   ids <- gFull %>% ungroup() %>%
-    dplyr::select(Mouse_Group_Name, Human_Group_Name) %>%
+    dplyr::select(mouse_Group_Name, human_Group_Name) %>%
     distinct()
 
   return(list("mouse" = indsMouse, "human" = indsHuman,
@@ -138,7 +140,9 @@
 #' @details
 #' When several genes from one species map to at least one gene from the other,
 #' counts are merged by taking the mean expression in each cell accross those
-#' genes. A different function can be specified using the `mergeFunction` argument.
+#' genes. A different function can be specified using the `mergeFunction`
+#' argument. This function is inspired adapted from
+## https://www.r-bloggers.com/converting-mouse-to-human-gene-names-with-biomart-package/
 #' @export
 getCommonOrthologs <- function(countMouse, countHuman, refMouse, refHuman,
                                mergeFunction = mean) {
@@ -148,33 +152,34 @@ getCommonOrthologs <- function(countMouse, countHuman, refMouse, refHuman,
   gencodeHuman <- .getGencode(refHuman, "human")
   message(".. mouse")
   gencodeMouse <- .getGencode(refMouse, "mouse")
-  gHuman <- .Orthologs(countHuman, gencodeHuman, "human")
-  gMouse <- .Orthologs(countMouse, gencodeMouse, "mouse")
+  gHuman <- .Orthologs(rownames(countHuman), gencodeHuman, "human")
+  gMouse <- .Orthologs(rownames(countMouse), gencodeMouse, "mouse")
 
   # Subset to common genes
   message("Tranforming the count matrices")
   inds <- .common(gHuman, gMouse)
 
-  countsMouse <- cbind(countMouse, inds$mouse) %>%
+  countsMouse <- cbind(countMouse[inds$mouse$mouse_ID, ], inds$mouse) %>%
     as.data.frame() %>%
-    dplyr::select(-Mouse_ID) %>%
-    dplyr::gather(key = "cell", value = "count", -Mouse_Group_Name) %>%
-    dplyr::group_by(cell, Mouse_Group_Name) %>%
+    dplyr::select(-mouse_ID) %>%
+    tidyr::gather(key = "cell", value = "count", -mouse_Group_Name) %>%
+    dplyr::group_by(cell, mouse_Group_Name) %>%
     dplyr::summarise(count = mergeFunction(count)) %>%
     tidyr::spread(key = cell, value = count)
-  rownames(countsMouse) <- countsMouse$Mouse_Group_Name
-  countsMouse <- countsMouse %>% dplyr::select(-Mouse_Group_Name)
+  rownames(countsMouse) <- countsMouse$mouse_Group_Name
+  countsMouse <- countsMouse %>% dplyr::select(-mouse_Group_Name)
 
-  countsHuman <- cbind(countHuman, inds$human) %>%
+  countsHuman <- cbind(countHuman[inds$human$human_ID, ], inds$human) %>%
     as.data.frame() %>%
-    dplyr::select(-Human_ID) %>%
-    dplyr::gather(key = "cell", value = "count", -Human_Group_Name) %>%
-    dplyr::group_by(cell, Human_Group_Name) %>%
+    dplyr::select(-human_ID) %>%
+    tidyr::gather(key = "cell", value = "count", -human_Group_Name) %>%
+    dplyr::group_by(cell, human_Group_Name) %>%
     dplyr::summarise(count = mergeFunction(count)) %>%
     tidyr::spread(key = cell, value = count)
-  rownames(countsHuman) <- countsHuman$Human_Group_Name
-  countsHuman <- countsHuman %>% dplyr::select(-Human_Group_Name)
+  rownames(countsHuman) <- countsHuman$human_Group_Name
+  countsHuman <- countsHuman %>% dplyr::select(-human_Group_Name)
 
-  return(list("mouse" = countsMouse, "human" = countsHuman))
+  return(list("mouse" = countsMouse, "human" = countsHuman,
+              "ids" = inds$common))
 }
 
