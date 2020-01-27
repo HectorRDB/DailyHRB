@@ -111,7 +111,12 @@
     dplyr::select(Human_ID, Human_Group_Name) %>%
     dplyr::distinct()
 
-  return(list("mouse" = indsMouse, "human" = indsHuman))
+  ids <- gFull %>% ungroup() %>%
+    dplyr::select(Mouse_Group_Name, Human_Group_Name) %>%
+    distinct()
+
+  return(list("mouse" = indsMouse, "human" = indsHuman,
+              "common" = ids))
 }
 
 # Restrict the matrix to common orthologs
@@ -138,12 +143,16 @@
 getCommonOrthologs <- function(countMouse, countHuman, refMouse, refHuman,
                                mergeFunction = mean) {
   # Get the genes
+  message("Getting the data from gencode")
+  message(".. human")
   gencodeHuman <- .getGencode(refHuman, "human")
+  message(".. mouse")
   gencodeMouse <- .getGencode(refMouse, "mouse")
   gHuman <- .Orthologs(countHuman, gencodeHuman, "human")
   gMouse <- .Orthologs(countMouse, gencodeMouse, "mouse")
 
   # Subset to common genes
+  message("Tranforming the count matrices")
   inds <- .common(gHuman, gMouse)
 
   countsMouse <- cbind(countMouse, inds$mouse) %>%
