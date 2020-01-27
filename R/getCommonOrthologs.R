@@ -17,12 +17,12 @@
       "ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_", species,
       "/release_", ref, "/gencode.v", ref, ".annotation.gtf.gz"
       )
-    curl_download(url, destfile = "/tmp/gencode.gft.gz")
+    curl::curl_download(url, destfile = "/tmp/gencode.gft.gz")
     loc <- "/tmp/gencode.gft.gz"
   } else {
     loc <- ref
   }
-  gencode <- read.table(ref, skip = 5, sep = c("\t"))
+  gencode <- read.table(loc, skip = 5, sep = c("\t"))
   colnames(gencode) <- c("chr", "annot", "type1", "start", "end", ".", "strand",
                        "ID", "infos")
   gencode <- gencode %>%
