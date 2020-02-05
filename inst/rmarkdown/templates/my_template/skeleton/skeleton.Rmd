@@ -7,6 +7,9 @@ output:
     toc: true
     toc_depth: 2
     toc_float: true
+    # This includes the code in the html file. It it very useful when sharing the
+    # file but it does increase the size of the html folder  
+    code_download: FALSE
 ---
 
 ```{r packages, include=F}
