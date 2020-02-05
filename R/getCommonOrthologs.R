@@ -48,8 +48,9 @@
 #' @param genes The list of genes for which we want the orthologs
 #' @param gencode the gencode file
 #' @param species The species
-#' @import AnnotationDbi org.Hs.eg.db biomaRt org.Mm.eg.db
+#' @import org.Hs.eg.db org.Mm.eg.db
 #' @importFrom dplyr inner_join full_join
+#' @importFrom biomaRt useMart getLDS
 #' @importFrom magrittr %>%
 .Orthologs <- function(genes, gencode, species){
   # Get the genes we actually use
