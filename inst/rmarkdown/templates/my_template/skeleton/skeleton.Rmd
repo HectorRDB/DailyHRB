@@ -10,6 +10,9 @@ output:
     # This includes the code in the html file. It it very useful when sharing the
     # file but it does increase the size of the html folder  
     code_download: FALSE
+  pdf_document:
+    toc: true
+    toc_depth: 2
 ---
 
 ```{r packages, include=F}
