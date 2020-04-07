@@ -132,7 +132,7 @@
 <span class="fu"><a href="../reference/checkType.html">checkType</a></span>(<span class="no">data</span>)</pre></body></html></div>
 <p><img src="DailyHRB_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;"></p>
 <pre><code>##   0%  25%  50%  75% 100% 
-##    0    0    1    2    7</code></pre>
+##    0    0    1    2    8</code></pre>
 </div>
 <div id="clean" class="section level2">
 <h2 class="hasAnchor">
@@ -144,46 +144,46 @@
 <span class="no">metaData</span>$<span class="no">ID2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span>(<span class="no">metaData</span>$<span class="no">ID1</span>)
 <span class="no">metaData</span></pre></body></html></div>
 <pre><code>##          SRA ID1  group ID2
-## 1  SRA17CJQ1   v group1   V
-## 2  SRA17CJQ1   s group1   S
-## 3  SRA17CJQ1   d group1   D
-## 4  SRA17CJQ1   k group1   K
-## 5  SRA17CJQ1   q group2   Q
-## 6  SRA17CJQ1   u group2   U
+## 1  SRA17CJQ1   t group1   T
+## 2  SRA17CJQ1   q group1   Q
+## 3  SRA17CJQ1   b group1   B
+## 4  SRA17CJQ1   h group1   H
+## 5  SRA17CJQ1   n group2   N
+## 6  SRA17CJQ1   o group2   O
 ## 7  SRA17CJQ1   e group2   E
-## 8  SRA17CJQ1   o group2   O
-## 9  SRA17CJQ1   t group3   T
-## 10 SRA17CJQ1   a group3   A
-## 11 SRA17CJQ1   n group3   N
-## 12 SRA17CJQ1   c group3   C</code></pre>
+## 8  SRA17CJQ1   k group2   K
+## 9  SRA17CJQ1   z group3   Z
+## 10 SRA17CJQ1   y group3   Y
+## 11 SRA17CJQ1   i group3   I
+## 12 SRA17CJQ1   m group3   M</code></pre>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/clean.html">clean</a></span>(<span class="no">metaData</span>)</pre></body></html></div>
 <pre><code>##    ID1  group ID2
-## 1    v group1   V
-## 2    s group1   S
-## 3    d group1   D
-## 4    k group1   K
-## 5    q group2   Q
-## 6    u group2   U
+## 1    t group1   T
+## 2    q group1   Q
+## 3    b group1   B
+## 4    h group1   H
+## 5    n group2   N
+## 6    o group2   O
 ## 7    e group2   E
-## 8    o group2   O
-## 9    t group3   T
-## 10   a group3   A
-## 11   n group3   N
-## 12   c group3   C</code></pre>
+## 8    k group2   K
+## 9    z group3   Z
+## 10   y group3   Y
+## 11   i group3   I
+## 12   m group3   M</code></pre>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/clean.html">clean</a></span>(<span class="no">metaData</span>, <span class="kw">unique</span> <span class="kw">=</span> <span class="no">F</span>, <span class="kw">keep</span> <span class="kw">=</span> <span class="st">"ID1"</span>)</pre></body></html></div>
 <pre><code>##     group ID1
-## 1  group1   v
-## 2  group1   s
-## 3  group1   d
-## 4  group1   k
-## 5  group2   q
-## 6  group2   u
+## 1  group1   t
+## 2  group1   q
+## 3  group1   b
+## 4  group1   h
+## 5  group2   n
+## 6  group2   o
 ## 7  group2   e
-## 8  group2   o
-## 9  group3   t
-## 10 group3   a
-## 11 group3   n
-## 12 group3   c</code></pre>
+## 8  group2   k
+## 9  group3   z
+## 10 group3   y
+## 11 group3   i
+## 12 group3   m</code></pre>
 </div>
 <div id="plotsmiley" class="section level2">
 <h2 class="hasAnchor">
