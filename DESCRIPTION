@@ -38,7 +38,7 @@ Imports:
     org.Hs.eg.db,
     biomaRt,
     org.Mm.eg.db
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: 
     knitr,
     rmarkdown

@@ -4,7 +4,7 @@
 \alias{.common}
 \title{common Function}
 \usage{
-.common(gHuman, gMouse)
+.common(gHuman, gMouse, gencodeHuman, gencodeMouse)
 }
 \arguments{
 \item{gHuman}{The list of human genes}

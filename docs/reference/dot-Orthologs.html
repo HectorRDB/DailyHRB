@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>updatePackages Function — updatePackages • DailyHRB</title>
+<title>.Orthologs Function — .Orthologs • DailyHRB</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="updatePackages Function — updatePackages" />
-<meta property="og:description" content="This function needs only to be run when R is updated (i.e once a year). It will look at the old list of packages that where installed and will try to install them. It will also returns a list of the packages that failed (probably mostly Github packages)." />
+<meta property="og:title" content=".Orthologs Function — .Orthologs" />
+<meta property="og:description" content="For a list of genes, find the orthologs in the other species" />
 
 
 
@@ -106,27 +106,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>updatePackages Function</h1>
+    <h1>.Orthologs Function</h1>
     
-    <div class="hidden name"><code>updatePackages.Rd</code></div>
+    <div class="hidden name"><code>dot-Orthologs.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function needs only to be run when R is updated (i.e once a year). It will look at the old list of packages that where installed and will try to install them. It will also returns a list of the packages that failed (probably mostly Github packages).</p>
+    <p>For a list of genes, find the orthologs in the other species</p>
     </div>
 
-    <pre class="usage"><span class='fu'>updatePackages</span>(<span class='no'>oldLib</span>, <span class='kw'>newLib</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/libPaths.html'>.libPaths</a></span>()[<span class='fl'>1</span>])</pre>
+    <pre class="usage"><span class='fu'>.Orthologs</span>(<span class='no'>genes</span>, <span class='no'>gencode</span>, <span class='no'>species</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>oldLib</th>
-      <td><p>where the old packages where stored</p></td>
+      <th>genes</th>
+      <td><p>The list of genes for which we want the orthologs</p></td>
     </tr>
     <tr>
-      <th>newLib</th>
-      <td><p>where the new packages will be stored</p></td>
+      <th>gencode</th>
+      <td><p>the gencode file</p></td>
+    </tr>
+    <tr>
+      <th>species</th>
+      <td><p>The species</p></td>
     </tr>
     </table>
 

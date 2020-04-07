@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>updatePackages Function — updatePackages • DailyHRB</title>
+<title>getCommonOrthologs Function — getCommonOrthologs • DailyHRB</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="updatePackages Function — updatePackages" />
-<meta property="og:description" content="This function needs only to be run when R is updated (i.e once a year). It will look at the old list of packages that where installed and will try to install them. It will also returns a list of the packages that failed (probably mostly Github packages)." />
+<meta property="og:title" content="getCommonOrthologs Function — getCommonOrthologs" />
+<meta property="og:description" content="This function takes as input two count matrices from human and mouse and
+return the matrices subset to the ortholog genes" />
 
 
 
@@ -106,30 +107,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>updatePackages Function</h1>
+    <h1>getCommonOrthologs Function</h1>
     
-    <div class="hidden name"><code>updatePackages.Rd</code></div>
+    <div class="hidden name"><code>getCommonOrthologs.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function needs only to be run when R is updated (i.e once a year). It will look at the old list of packages that where installed and will try to install them. It will also returns a list of the packages that failed (probably mostly Github packages).</p>
+    <p>This function takes as input two count matrices from human and mouse and
+return the matrices subset to the ortholog genes</p>
     </div>
 
-    <pre class="usage"><span class='fu'>updatePackages</span>(<span class='no'>oldLib</span>, <span class='kw'>newLib</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/libPaths.html'>.libPaths</a></span>()[<span class='fl'>1</span>])</pre>
+    <pre class="usage"><span class='fu'>getCommonOrthologs</span>(
+  <span class='no'>listMouse</span>,
+  <span class='no'>listHuman</span>,
+  <span class='no'>refMouse</span>,
+  <span class='no'>refHuman</span>,
+  <span class='kw'>mergeFunction</span> <span class='kw'>=</span> <span class='no'>mean</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>oldLib</th>
-      <td><p>where the old packages where stored</p></td>
+      <th>listMouse</th>
+      <td><p>the genes from the mouse where we want the orthologs</p></td>
     </tr>
     <tr>
-      <th>newLib</th>
-      <td><p>where the new packages will be stored</p></td>
+      <th>listHuman</th>
+      <td><p>the genes from the human where we want the orthologs</p></td>
+    </tr>
+    <tr>
+      <th>refMouse</th>
+      <td><p>the gencode reference for mouse.
+Either a number (the gencode version) or the location of the file.</p></td>
+    </tr>
+    <tr>
+      <th>refHuman</th>
+      <td><p>the gencode reference for human.
+Either a number (the gencode version) or the location of the file</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>When several genes from one species map to at least one gene from the other,
+we return all genes. This function is inspired adapted from</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

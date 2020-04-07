@@ -5,26 +5,23 @@
 \title{getCommonOrthologs Function}
 \usage{
 getCommonOrthologs(
-  countMouse,
-  countHuman,
+  listMouse,
+  listHuman,
   refMouse,
   refHuman,
   mergeFunction = mean
 )
 }
 \arguments{
-\item{countMouse}{the count matrix from the mouse}
+\item{listMouse}{the genes from the mouse where we want the orthologs}
 
-\item{countHuman}{the count matrix from the human}
+\item{listHuman}{the genes from the human where we want the orthologs}
 
 \item{refMouse}{the gencode reference for mouse.
 Either a number (the gencode version) or the location of the file.}
 
 \item{refHuman}{the gencode reference for human.
 Either a number (the gencode version) or the location of the file}
-
-\item{mergeFunction}{How to merge multimaps. See details.
-Default to \code{mean}}
 }
 \description{
 This function takes as input two count matrices from human and mouse and
@@ -32,7 +29,5 @@ return the matrices subset to the ortholog genes
 }
 \details{
 When several genes from one species map to at least one gene from the other,
-counts are merged by taking the mean expression in each cell accross those
-genes. A different function can be specified using the `mergeFunction`
-argument. This function is inspired adapted from
+we return all genes. This function is inspired adapted from
 }
