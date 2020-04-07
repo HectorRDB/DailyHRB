@@ -22,7 +22,8 @@
   } else {
     loc <- ref
   }
-  gencode <- read.table(loc, skip = 5, sep = c("\t"))
+  gencode <- read.table(loc, skip = 5, sep = c("\t"),
+                        stringsAsFactors = FALSE)
   colnames(gencode) <- c("chr", "annot", "type1", "start", "end", ".", "strand",
                        "ID", "infos")
   gencode <- gencode %>%
@@ -57,7 +58,7 @@
   df <- data.frame(Symbol = genes,
                    ID = 1:length(genes),
                    stringsAsFactors = F) %>%
-    dplyr::inner_join(gencode, by = "Symbol")
+    dplyr::left_join(gencode, by = "Symbol")
   colnames(df) <- paste(species, colnames(df), sep = "_")
   x <- df[, paste(species, "Ensembl", sep = "_")]
 
@@ -94,9 +95,11 @@
 .common <- function(gHuman, gMouse, gencodeHuman, gencodeMouse) {
   human <- left_join(gHuman, gencodeMouse, by = c("mouse_Ensembl" = "Ensembl")) %>%
     dplyr::rename(mouse_Symbol = Symbol) %>%
+    mutate(mouse_Symbol = if_else(is.na(mouse_Symbol), mouse_Ensembl, mouse_Symbol)) %>%
     select(human_Symbol, mouse_Symbol)
   mouse <- left_join(gMouse, gencodeHuman, by = c("human_Ensembl" = "Ensembl")) %>%
     dplyr::rename(human_Symbol = Symbol) %>%
+    mutate(human_Symbol = if_else(is.na(human_Symbol), human_Ensembl, human_Symbol)) %>%
     select(human_Symbol, mouse_Symbol)
   return(bind_rows(human, mouse) %>% distinct())
 }
