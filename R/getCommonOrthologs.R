@@ -122,30 +122,26 @@
               "common" = ids))
 }
 
-# Restrict the matrix to common orthologs
+# Return the list of common orthologs
 #' getCommonOrthologs Function
 #'
 #' This function takes as input two count matrices from human and mouse and
 #' return the matrices subset to the ortholog genes
 #'
-#' @param countMouse the count matrix from the mouse
-#' @param countHuman the count matrix from the human
+#' @param listMouse the genes from the mouse where we want the orthologs
+#' @param listHuman the genes from the human where we want the orthologs
 #' @param refMouse the gencode reference for mouse.
 #' Either a number (the gencode version) or the location of the file.
 #' @param refHuman the gencode reference for human.
 #' Either a number (the gencode version) or the location of the file
-#' @param mergeFunction How to merge multimaps. See details.
-#' Default to \code{mean}
 #' @import dplyr tidyr
 #' @importFrom magrittr %>%
 #' @details
 #' When several genes from one species map to at least one gene from the other,
-#' counts are merged by taking the mean expression in each cell accross those
-#' genes. A different function can be specified using the `mergeFunction`
-#' argument. This function is inspired adapted from
+#' we return all genes. This function is inspired adapted from
 ## https://www.r-bloggers.com/converting-mouse-to-human-gene-names-with-biomart-package/
 #' @export
-getCommonOrthologs <- function(countMouse, countHuman, refMouse, refHuman,
+getCommonOrthologs <- function(listMouse, listHuman, refMouse, refHuman,
                                mergeFunction = mean) {
   # Get the genes
   message("Getting the data from gencode")
@@ -153,34 +149,11 @@ getCommonOrthologs <- function(countMouse, countHuman, refMouse, refHuman,
   gencodeHuman <- .getGencode(refHuman, "human")
   message(".. mouse")
   gencodeMouse <- .getGencode(refMouse, "mouse")
-  gHuman <- .Orthologs(rownames(countHuman), gencodeHuman, "human")
-  gMouse <- .Orthologs(rownames(countMouse), gencodeMouse, "mouse")
+  gHuman <- .Orthologs(listHuman, gencodeHuman, "human")
+  gMouse <- .Orthologs(listMouse, gencodeMouse, "mouse")
+  commons <- .common(gHuman = gHuman, gMouse = gMouse)
 
-  # Subset to common genes
-  message("Tranforming the count matrices")
-  inds <- .common(gHuman, gMouse)
-
-  countsMouse <- cbind(countMouse[inds$mouse$mouse_ID, ], inds$mouse) %>%
-    as.data.frame() %>%
-    dplyr::select(-mouse_ID) %>%
-    tidyr::gather(key = "cell", value = "count", -mouse_Group_Name) %>%
-    dplyr::group_by(cell, mouse_Group_Name) %>%
-    dplyr::summarise(count = mergeFunction(count)) %>%
-    tidyr::spread(key = cell, value = count)
-  rownames(countsMouse) <- countsMouse$mouse_Group_Name
-  countsMouse <- countsMouse %>% dplyr::select(-mouse_Group_Name)
-
-  countsHuman <- cbind(countHuman[inds$human$human_ID, ], inds$human) %>%
-    as.data.frame() %>%
-    dplyr::select(-human_ID) %>%
-    tidyr::gather(key = "cell", value = "count", -human_Group_Name) %>%
-    dplyr::group_by(cell, human_Group_Name) %>%
-    dplyr::summarise(count = mergeFunction(count)) %>%
-    tidyr::spread(key = cell, value = count)
-  rownames(countsHuman) <- countsHuman$human_Group_Name
-  countsHuman <- countsHuman %>% dplyr::select(-human_Group_Name)
-
-  return(list("mouse" = countsMouse, "human" = countsHuman,
-              "ids" = inds$common))
+  # return(list("mouse" = countsMouse, "human" = countsHuman,
+  #             "ids" = inds$common))
 }
 
