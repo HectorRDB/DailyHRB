@@ -91,35 +91,14 @@
 #' @param gMouse The list of mouse genes
 #' @import dplyr tidyr
 #' @importFrom magrittr %>%
-.common <- function(gHuman, gMouse) {
-  gFull <- dplyr::inner_join(gHuman, gMouse) %>%
-    dplyr::group_by(human_Symbol, mouse_Symbol) %>%
-    dplyr::slice(1) %>%
-    dplyr::select(-human_Ensembl, -mouse_Ensembl) %>%
-    dplyr::group_by(human_Symbol) %>%
-    dplyr::arrange(mouse_Symbol) %>%
-    dplyr::mutate(mouse_Group_Name = paste0(mouse_Symbol, collapse = "_")) %>%
-    dplyr::ungroup() %>%
-    dplyr::group_by(mouse_Symbol) %>%
-    dplyr::arrange(human_Symbol) %>%
-    dplyr::mutate(human_Group_Name = paste0(human_Symbol, collapse = "_"))
-
-  indsMouse <- gFull %>%
-    dplyr::ungroup() %>%
-    dplyr::select(mouse_ID, mouse_Group_Name) %>%
-    dplyr::distinct()
-
-  indsHuman <- gFull %>%
-    dplyr::ungroup() %>%
-    dplyr::select(human_ID, human_Group_Name) %>%
-    dplyr::distinct()
-
-  ids <- gFull %>% ungroup() %>%
-    dplyr::select(mouse_Group_Name, human_Group_Name) %>%
-    distinct()
-
-  return(list("mouse" = indsMouse, "human" = indsHuman,
-              "common" = ids))
+.common <- function(gHuman, gMouse, gencodeHuman, gencodeMouse) {
+  human <- left_join(gHuman, gencodeMouse, by = c("mouse_Ensembl" = "Ensembl")) %>%
+    dplyr::rename(mouse_Symbol = Symbol) %>%
+    select(human_Symbol, mouse_Symbol)
+  mouse <- left_join(gMouse, gencodeHuman, by = c("human_Ensembl" = "Ensembl")) %>%
+    dplyr::rename(human_Symbol = Symbol) %>%
+    select(human_Symbol, mouse_Symbol)
+  return(bind_rows(human, mouse) %>% distinct())
 }
 
 # Return the list of common orthologs
@@ -151,9 +130,9 @@ getCommonOrthologs <- function(listMouse, listHuman, refMouse, refHuman,
   gencodeMouse <- .getGencode(refMouse, "mouse")
   gHuman <- .Orthologs(listHuman, gencodeHuman, "human")
   gMouse <- .Orthologs(listMouse, gencodeMouse, "mouse")
-  commons <- .common(gHuman = gHuman, gMouse = gMouse)
+  commons <- .common(gHuman = gHuman, gMouse = gMouse,
+                     gencodeHuman = gencodeHuman, gencodeMouse = gencodeMouse)
 
-  # return(list("mouse" = countsMouse, "human" = countsHuman,
-  #             "ids" = inds$common))
+  return(commons)
 }
 
