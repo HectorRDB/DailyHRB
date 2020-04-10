@@ -123,8 +123,7 @@
 #' we return all genes. This function is inspired adapted from
 ## https://www.r-bloggers.com/converting-mouse-to-human-gene-names-with-biomart-package/
 #' @export
-getCommonOrthologs <- function(listMouse, listHuman, refMouse, refHuman,
-                               mergeFunction = mean) {
+getCommonOrthologs <- function(listMouse, listHuman, refMouse, refHuman) {
   # Get the genes
   message("Getting the data from gencode")
   message(".. human")
