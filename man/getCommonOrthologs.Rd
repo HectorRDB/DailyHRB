@@ -4,13 +4,7 @@
 \alias{getCommonOrthologs}
 \title{getCommonOrthologs Function}
 \usage{
-getCommonOrthologs(
-  listMouse,
-  listHuman,
-  refMouse,
-  refHuman,
-  mergeFunction = mean
-)
+getCommonOrthologs(listMouse, listHuman, refMouse, refHuman)
 }
 \arguments{
 \item{listMouse}{the genes from the mouse where we want the orthologs}

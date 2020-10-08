@@ -21,6 +21,7 @@ Collate:
     'updatePackages.R'
     'singleJobMemoryUsage.R'
     'getCommonOrthologs.R'
+    'dump_and_quit.R'
 Imports:
     stats,
     RColorBrewer,
@@ -38,7 +39,7 @@ Imports:
     org.Hs.eg.db,
     biomaRt,
     org.Mm.eg.db
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown
